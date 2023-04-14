@@ -16,7 +16,7 @@ use Symfony\Component\Console\Input\InputArgument;
     name: 'food:facility:info',
     description: 'Get info about a food facility'
 )]
-class FoodTruck extends Command
+class FacilityInfo extends Command
 {
     protected function configure(): void
     {
