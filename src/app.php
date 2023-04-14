@@ -14,7 +14,6 @@ $finder = new Finder();
 $finder->files()->in(__DIR__ . '/Commands');
 
 foreach ($finder as $cmd) {
-    var_dump($cmd->getRealPath(), $cmd->getFilenameWithoutExtension());
     require_once $cmd->getRealPath();
     $command = "App\Commands\\" . $cmd->getFilenameWithoutExtension();
 
