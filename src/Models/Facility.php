@@ -44,17 +44,6 @@ class Facility
         };
     }
 
-    public function __toString()
-    {
-        return "Applicant: " . $this->applicant . "
-Type: " . $this->type . "
-Address: " . $this->address . ($this->locationDescription ? " (" . $this->locationDescription . ")" : "") . "
-Permit: " . $this->permit . "
-Status: " . $this->getStatus() . "
-Food Item(s): " . $this->foodItems . "
-Schedule: <href=" . $this->schedule . ">" . $this->schedule . "</>";
-    }
-
     public function checkCriteria(array $criteria)
     {
         foreach ($criteria as $prop => $value) {
@@ -74,7 +63,14 @@ Schedule: <href=" . $this->schedule . ">" . $this->schedule . "</>";
             default => 'error'
         };
 
-        return sprintf('<%s>%s</%s>%s%s', $color, $this->status, $color, ($approvedOn ? ' (Approved On ' . $approvedOn . ')' : ''), ($expiresOn ? ' (Expiration of ' . $expiresOn . ')' : ''));
+        return sprintf(
+            '<%s>%s</%s>%s%s', 
+            $color, 
+            $this->status, 
+            $color, 
+            ($approvedOn ? ' (Approved On ' . $approvedOn . ')' : ''), 
+            ($expiresOn ? ' (Expiration of ' . $expiresOn . ')' : '')
+        );
     }
 
     public final function getAddress(): string
