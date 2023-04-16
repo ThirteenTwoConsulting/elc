@@ -54,6 +54,7 @@ class FacilityInfo extends Command
             'address' => $input->getOption('street'),
         ];
 
+        // Kind of a hack to determine if any filters should be applied, as value will be false if not passed in
         $isCriteriaEmpty = empty(max($criteria));
 
         $results = $facilities->slice(0, $input->getOption('cap'))->filter(function (Facility $facility) use ($criteria, $isCriteriaEmpty) {
